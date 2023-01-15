@@ -2,7 +2,7 @@
 const fs = require("fs")
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-console.log("Running Boring")
+console.log("Running @luxdefi/hardhat")
 
 async function run(command) {
     const { stdout, stderr } = await exec(command)
@@ -17,15 +17,15 @@ async function init() {
     function makedir(dir) {
         if (!fs.existsSync(rootPath + dir)){
             fs.mkdirSync(rootPath + dir);
-        }    
+        }
     }
 
     function copy(from, to, overwrite) {
         if (overwrite || !fs.existsSync(rootPath + to)){
             fs.copyFileSync(__dirname + from, rootPath + to)
-        }    
+        }
     }
-    
+
     makedir(".vscode")
     makedir("contracts")
     makedir("scripts")
@@ -63,11 +63,11 @@ async function init() {
     copy("/project/web3/index.html", "web3/index.html", false)
 
     const json = require(rootPath + 'package.json');
-    
+
     if (!json.hasOwnProperty('scripts')) {
       json.scripts = {};
     }
-    
+
     json.scripts['compile'] = 'hardhat compile';
     json.scripts['test'] = 'hardhat test';
     json.scripts['coverage'] = 'hardhat coverage && open-cli ./coverage/index.html';
@@ -86,7 +86,7 @@ async function init() {
 async function add(name) {
     const rootPath = require.main.paths[0].split('node_modules')[0];
 
-    fs.writeFileSync(rootPath + "contracts/" + name + ".sol", 
+    fs.writeFileSync(rootPath + "contracts/" + name + ".sol",
 `//SPDX-License-Identifier: MIT
 pragma solidity 0.8.9;
 
