@@ -38,8 +38,7 @@ function solcover(userSettings) {
 }
 
 function hardhat(userSettings) {
-    require('@typechain/hardhat')    
-    require("@nomiclabs/hardhat-waffle")
+    require('@typechain/hardhat')
     require("hardhat-deploy")
     require("solidity-coverage")
     require("hardhat-gas-reporter")
@@ -49,8 +48,8 @@ function hardhat(userSettings) {
 
     const test_accounts = process.env.MNEMONIC && process.env.FUNDER_MNEMONIC
     ? [
-        { privateKey: ethers.Wallet.fromMnemonic(process.env.MNEMONIC).privateKey, balance: "9900000000000000000000" }, 
-        { privateKey: ethers.Wallet.fromMnemonic(process.env.FUNDER_MNEMONIC).privateKey, balance: "9900000000000000000000" } 
+        { privateKey: ethers.Wallet.fromMnemonic(process.env.MNEMONIC).privateKey, balance: "9900000000000000000000" },
+        { privateKey: ethers.Wallet.fromMnemonic(process.env.FUNDER_MNEMONIC).privateKey, balance: "9900000000000000000000" }
     ]
     : {
         mnemonic: "test test test test test test test test test test test junk",
@@ -277,7 +276,7 @@ function hardhat(userSettings) {
                         },
                     },
                 },
-            ]            
+            ]
         },
     }, userSettings)
 }
@@ -297,7 +296,7 @@ function prettier(userSettings) {
                     endOfLine: "lf",
                     semi: false,
                 },
-            },            
+            },
             {
                 files: "*.sol",
                 options: {
@@ -329,7 +328,7 @@ function prettier(userSettings) {
                     tabWidth: 4,
                     endOfLine: "lf",
                 },
-            },            
+            },
             {
                 files: "*.json",
                 options: {
